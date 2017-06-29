@@ -23,17 +23,5 @@ namespace LinqSpecs.Tests
             CollectionAssert.Contains(result, "Julian");
             CollectionAssert.DoesNotContain(result, "Manuel");
 		}
-
-        [Test]
-        public void should_be_serializable()
-        {
-            var spec = new AdHocSpecification<string>(n => n == "it works");
-
-            var deserializedSpec = Helpers.SerializeAndDeserialize(spec);
-
-            Assert.That(deserializedSpec, Is.InstanceOf<AdHocSpecification<string>>());
-            Assert.That(deserializedSpec.ToExpression().Compile().Invoke("it works"), Is.True);
-            Assert.That(deserializedSpec.ToExpression().Compile().Invoke("it fails"), Is.False);
-        }
     }
 }

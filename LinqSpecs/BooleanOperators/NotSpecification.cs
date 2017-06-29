@@ -6,16 +6,13 @@ namespace LinqSpecs
     /// <summary>
     /// Negates a source specification.
     /// </summary>
-    [Serializable]
 	class NotSpecification<T> : Specification<T>
 	{
 		readonly Specification<T> spec;
 
 		public NotSpecification(Specification<T> spec)
 		{
-            if (spec == null)
-                throw new ArgumentNullException("spec");
-            this.spec = spec;
+            this.spec = spec ?? throw new ArgumentNullException("spec");
 		}
 
 		public override Expression<Func<T, bool>> ToExpression()

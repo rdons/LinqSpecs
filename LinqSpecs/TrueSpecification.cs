@@ -6,7 +6,6 @@ namespace LinqSpecs
     /// <summary>
     /// Specification which is satisfied by any object.
     /// </summary>
-	[Serializable]
 	public class TrueSpecification<T> : Specification<T>
 	{
         /// <summary>

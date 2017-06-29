@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using System.Linq.Expressions;
 
 namespace LinqSpecs
@@ -8,7 +7,6 @@ namespace LinqSpecs
     /// Base class for query specifications that can be combined
     /// using logical AND, OR and NOT operators.
     /// </summary>
-    [Serializable]
 	public abstract class Specification<T>
 	{
         /// <summary>
@@ -20,15 +18,6 @@ namespace LinqSpecs
         /// by just assigning it or passing it as such to another method.
         /// </remarks>
         public abstract Expression<Func<T, bool>> ToExpression();
-
-        /// <summary>
-        /// This method is obsolete. Use <see cref="ToExpression"/> method instead.
-        /// </summary>
-        [Obsolete("This method is obsolete. Use ToExpression method instead.")]
-        public virtual Expression<Func<T, bool>> IsSatisfiedBy()
-        {
-            return ToExpression();
-        }
 
         /// <summary>
         /// Performs an implicit conversion from <see cref="Specification{T}"/>

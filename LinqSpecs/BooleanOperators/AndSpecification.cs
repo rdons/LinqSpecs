@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq.Expressions;
+
 using LinqSpecs.ExpressionCombining;
 
 namespace LinqSpecs
@@ -7,7 +8,6 @@ namespace LinqSpecs
     /// <summary>
     /// Combines two specifications by using logical AND operation.
     /// </summary>
-	[Serializable]
 	class AndSpecification<T> : Specification<T>
 	{
 		readonly Specification<T> spec1;
@@ -15,13 +15,8 @@ namespace LinqSpecs
 
 		public AndSpecification(Specification<T> spec1, Specification<T> spec2)
 		{
-            if (spec1 == null)
-                throw new ArgumentNullException("spec1");
-            if (spec2 == null)
-                throw new ArgumentNullException("spec2");
-
-            this.spec1 = spec1;
-			this.spec2 = spec2;
+            this.spec1 = spec1 ?? throw new ArgumentNullException("spec1");
+			this.spec2 = spec2 ?? throw new ArgumentNullException("spec2");
 		}
 
         public override Expression<Func<T, bool>> ToExpression()

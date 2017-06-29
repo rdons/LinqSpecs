@@ -6,7 +6,6 @@ namespace LinqSpecs
     /// <summary>
     /// Specification which is not satisfied by any object.
     /// </summary>
-	[Serializable]
 	public class FalseSpecification<T> : Specification<T>
 	{
         /// <summary>
