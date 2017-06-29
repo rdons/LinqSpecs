@@ -10,12 +10,6 @@ namespace LinqSpecs
 	{
         Expression<Func<T, bool>> predicate;
 
-        // For serialization only
-        string serializedPredicate;
-
-        private AdHocSpecification()
-        { }
-
         /// <summary>
         /// Creates a custom ad-hoc <see cref="Specification{T}"/> from the given predicate expression.
         /// </summary>
